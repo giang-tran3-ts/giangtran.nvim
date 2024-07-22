@@ -6,4 +6,14 @@ return {
       require "configs.conform"
     end,
   },
+  {
+    "liuchengxu/vista.vim",
+    lazy = false,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = true
+  }
+
 }
