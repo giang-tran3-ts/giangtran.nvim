@@ -25,4 +25,4 @@ sudo install lazygit /usr/local/bin
 pip install pynvim
 
 # grep
-sudo apt-get install ripgrep
+sudo apt-get install ripgrep fd-find

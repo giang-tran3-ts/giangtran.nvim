@@ -17,14 +17,16 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = true,
+    lazy = false,
   },
   {
-    "dccsillag/magma-nvim",
+    "benlubas/molten-nvim",
     lazy = false,
+    version = "^1.0.0",
     build = ":UpdateRemotePlugins",
-    config = function()
-      vim.g.magma_automatically_open_output = true
-      vim.g.magma_image_provider = "kitty"
-    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    lazy = false,
   },
 }

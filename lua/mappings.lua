@@ -10,10 +10,13 @@ map("i", "jk", "<ESC>")
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 map({ "n", "i", "v" }, "<C-q>", "<cmd> q <cr>")
 
-map("n", "<leader>v", "<cmd>Vista!!<cr>", { desc = "Vista ctags" })
+map("n", "<leader>vv", "<cmd>Vista!!<cr>", { desc = "Vista ctags" })
 
 map("i", "<D-Left>", "<C-O>0", { desc = "Move to start of line" }) -- <D stand for command key in mac
 map("i", "<D-Right>", "<C-O>$", { desc = "Move to end of line" })
 
 map("i", "<A-Left>", "<C-O>b", { desc = "Move to previous word" })
 map("i", "<A-Right>", "<C-O>w", { desc = "Move to next word" })
+
+-- terminal
+map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
