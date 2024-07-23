@@ -10,4 +10,4 @@ map("i", "jk", "<ESC>")
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 map({ "n", "i", "v" }, "<C-q>", "<cmd> q <cr>")
 
-map("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+map("n", "<leader>v", "<cmd>Vista!!<cr>", { desc = "Vista ctags" })
