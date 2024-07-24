@@ -18,5 +18,8 @@ map("i", "<D-Right>", "<C-O>$", { desc = "Move to end of line" })
 map("i", "<A-Left>", "<C-O>b", { desc = "Move to previous word" })
 map("i", "<A-Right>", "<C-O>w", { desc = "Move to next word" })
 
--- terminal
-map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
+-- tab window navigation
+map("n", "<leader>Tt", "<cmd>tabNext<cr>", { desc = "Next tab" })
+map("n", "<leader>TT", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+map("n", "<leader>Tc", "<cmd>tabclose<cr>", { desc = "Close tab" })
+map("n", "<leader>Tn", "<cmd>tabnew<cr>", { desc = "New tab" })

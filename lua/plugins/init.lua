@@ -14,12 +14,6 @@ return {
     end,
   },
   {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = true,
-    lazy = false,
-  },
-  {
     "benlubas/molten-nvim",
     lazy = false,
     version = "^1.0.0",
