@@ -38,3 +38,13 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Create an autocmd group to avoid duplication
+vim.api.nvim_create_augroup("ChangeDirectory", { clear = true })
+
+-- Define the autocmd
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = "ChangeDirectory",
+  pattern = "*",
+  command = "silent! lcd %:p:h",
+})
