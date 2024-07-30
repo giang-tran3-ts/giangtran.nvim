@@ -6,10 +6,4 @@ return {
       require "configs.conform"
     end,
   },
-  {
-    "benlubas/molten-nvim",
-    lazy = false,
-    version = "^1.0.0",
-    build = ":UpdateRemotePlugins",
-  },
 }
