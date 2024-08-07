@@ -5,7 +5,7 @@
 local M = {}
 
 M.ui = {
-  theme = "gruvbox_light",
+  theme = "solarized_dark",
 
   hl_override = {
     Comment = { italic = true },
