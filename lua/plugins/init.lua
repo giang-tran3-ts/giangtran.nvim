@@ -6,4 +6,7 @@ return {
       require "configs.conform"
     end,
   },
+  {
+    "nvimtools/hydra.nvim",
+  },
 }

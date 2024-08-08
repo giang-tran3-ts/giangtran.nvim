@@ -1,7 +1,6 @@
 require "nvchad.mappings"
-
 -- add yours here
-
+local hydra = require "hydra"
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -38,11 +37,32 @@ map("n", "F", "<cmd>Lspsaga finder<cr>", { desc = "Lspsaga | Finder" })
 map("n", "<leader>dD", "<cmd>Lspsaga peek_definition<cr>", { desc = "Lspsaga | Peek definition" })
 
 -- gitsigns
-map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Gitsigns | Preview hunk" })
-map("n", "<localleader>gw", "<cmd>Gitsigns next_hunk<cr>", { desc = "Gitsigns | Next hunk" })
-map("n", "<localleader>gb", "<cmd>Gitsigns prev_hunk<cr>", { desc = "Gitsigns | Previous hunk" })
-map("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "Gitsigns | Show diff" })
 
+hydra {
+  name = "Gitsigns keys",
+  hint = [[
+      _p_: Preview hunk  _d_: Show diff
+      _w_: Next hunk  _b_: Previous hunk
+      ^^     _<esc>_/_q_: exit ]],
+  config = {
+    color = "pink",
+    invoke_on_body = true,
+    hint = {
+      border = "rounded", -- you can change the border if you want
+    },
+  },
+  mode = { "n" },
+  body = "<localleader>g", -- this is the key that triggers the hydra
+  heads = {
+    { "p", ":Gitsigns preview_hunk<cr>" },
+    { "d", ":Gitsigns diffthis<cr>" },
+    { "w", ":Gitsigns next_hunk<CR>" },
+    { "b", ":Gitsigns prev_hunk<CR>" },
+    { "l", ":Gitsigns toggle_current_line_blame<CR>" },
+    { "<esc>", nil, { exit = true } },
+    { "q", nil, { exit = true } },
+  },
+}
 -- notebook
 local runner = require "quarto.runner"
 vim.keymap.set("n", "<localleader>rc", runner.run_cell, { desc = "run cell", silent = true })
@@ -76,3 +96,35 @@ vim.keymap.set("n", "<localleader>ki", ":MoltenInit<CR>", { desc = "Initialize M
 vim.keymap.set("n", "<localleader>kn", ":MoltenInfo<CR>", { desc = "Info Molten kernel", silent = true })
 -- if you work with html outputs:
 vim.keymap.set("n", "<localleader>mx", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
+
+local function keys(str)
+  return function()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(str, true, false, true), "m", true)
+  end
+end
+
+hydra {
+  name = "QuartoNavigator",
+  hint = [[
+      _j_/_k_: move down/up  _r_: run cell
+      _l_: run line  _R_: run above
+      ^^     _<esc>_/_q_: exit ]],
+  config = {
+    color = "pink",
+    invoke_on_body = true,
+    hint = {
+      border = "rounded", -- you can change the border if you want
+    },
+  },
+  mode = { "n" },
+  body = "<localleader>j", -- this is the key that triggers the hydra
+  heads = {
+    { "j", keys "]b" },
+    { "k", keys "[b" },
+    { "r", ":QuartoSend<CR>" },
+    { "l", ":QuartoSendLine<CR>" },
+    { "R", ":QuartoSendAbove<CR>" },
+    { "<esc>", nil, { exit = true } },
+    { "q", nil, { exit = true } },
+  },
+}
